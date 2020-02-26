@@ -1,0 +1,8 @@
+What should the store be able to do?
+x Store information
+x Run an outside function whenever state changes
+x Outside should be able to change store using "actions"
+    x Actions are objects that describe something that happened
+    x Actions are of a "type" and contain additional data (payload, info)
+    x Actions reach the store via "dispatching" them
+    x Store updates itself based on information from actions

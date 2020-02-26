@@ -1,0 +1,23 @@
+
+let myVar = 3;
+<MyElement myProp="HELLO" otherProp={ myVar }>
+    <h1>FOO</h1>
+</MyElement>
+
+- Component with a name
+- Two props, myProp & otherProp
+- otherProp will be assigned the value of `myVar`
+- myProp will be assigned the constant string "HELLO"
+- Passes children (h1) to MyElement
+- Uses JSX notation (HTML-like way of representing JS)
+- Renders (returns) output to browser
+
+function MyElement(myProp, otherProp, children) {
+    return 
+}
+
+function App() {
+    return div(MenuBar(), UsersSection());
+}
+
+output = MyElement("HELLO", myVar, h1("FOO"));
