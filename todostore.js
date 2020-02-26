@@ -7,25 +7,38 @@ module.exports = {
 
 framework.setInitialState({
     items: [],
+    highscores: [],
 });
 
-
-framework.setActionHandler((state, action) => {
-    console.log('Got action', action);
+let handleItemsActions = (state, action) => {
     if (action.type == 'ADD_ITEM') {
-        state.items.push({
+        state.push({
             done: false,
             title: action.title
         });
     }
     else if (action.type == 'CHECK_ITEM') {
-        let index = state.items.findIndex(o => o.title == action.title)
-        state.items[index].done = true;
+        let index = state.findIndex(o => o.title == action.title)
+        state[index].done = true;
     }
     else if (action.type == 'DELETE_ITEM') {
-        let index = state.items.findIndex(o => o.title == action.title)
-        state.items.splice(index, 1);
+        let index = state.findIndex(o => o.title == action.title)
+        state.splice(index, 1);
     }
 
     return state;
+}
+
+
+let handleHighscoresActions = (state, action) => {
+    // TODO: Logic
+    return state;
+}
+
+framework.setActionHandler((state, action) => {
+    console.log('Got action', action);
+    return {
+        items: handleItemsActions(state.items, action),
+        highscores: handleHighscoresActions(state.highscores, action),
+    };
 });
