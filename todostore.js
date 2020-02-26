@@ -10,7 +10,7 @@ framework.setInitialState({
     highscores: [],
 });
 
-let handleItemsActions = (state, action) => {
+let items = (state, action) => {
     if (action.type == 'ADD_ITEM') {
         state.push({
             done: false,
@@ -30,15 +30,10 @@ let handleItemsActions = (state, action) => {
 }
 
 
-let handleHighscoresActions = (state, action) => {
+let highscores = (state, action) => {
     // TODO: Logic
     return state;
 }
 
-framework.setActionHandler((state, action) => {
-    console.log('Got action', action);
-    return {
-        items: handleItemsActions(state.items, action),
-        highscores: handleHighscoresActions(state.highscores, action),
-    };
-});
+
+framework.setActionHandler(framework.combineReducers({ items, highscores }));

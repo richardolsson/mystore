@@ -22,4 +22,16 @@ module.exports = {
         state = handleAction(state, action);
         onStateChange(state);
     },
+
+    combineReducers: (reducers) => {
+        return (state, action) => {
+            let newState = {};
+            Object.keys(reducers).forEach(key => {
+                let reducer = reducers[key];
+                newState[key] = reducer(state[key], action);
+            });
+
+            return newState;
+        };
+    },
 }
