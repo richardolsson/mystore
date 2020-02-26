@@ -1,7 +1,11 @@
 const store = require('./todostore');
 
 store.onStateChange(newState => {
-    console.log('This is the state now:', newState);
+    console.log('= State ======================');
+    newState.items.forEach(item => {
+        let check = item.done? 'x' : ' ';
+        console.log('  [' + check + '] ' + item.title);
+    });
 });
 
 store.dispatch({ type: 'ADD_ITEM', title: 'Buy food' });
