@@ -26,4 +26,6 @@ framework.setActionHandler((state, action) => {
         let index = state.items.findIndex(o => o.title == action.title)
         state.items.splice(index, 1);
     }
+
+    return state;
 });

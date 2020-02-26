@@ -19,7 +19,7 @@ module.exports = {
     },
 
     dispatch: (action) => {
-        handleAction(state, action);
+        state = handleAction(state, action);
         onStateChange(state);
     },
 }
